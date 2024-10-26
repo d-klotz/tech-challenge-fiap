@@ -8,6 +8,7 @@ Pessoas:
 
 Regreção:
 
+    0 - Apresentar a Equipe
     1 - Pessoa 1 = Leitura
     2 - Pessoa 1 = Tratamento - Limpeza de dados
     3 - Pessoa 1 = Analise dos dados
