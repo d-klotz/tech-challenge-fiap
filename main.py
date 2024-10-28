@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score
 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
 
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import r2_score
@@ -34,7 +35,7 @@ def main():
     #print(data.dtypes)
     #print(df.dtypes)
 
-    data_processing(data)
+    #data_processing(data)
     data_processing(df)
 
 
@@ -45,14 +46,16 @@ def data_processing(data):
 
     x = data[['age', 'gender', 'bmi', 'children', 'smoker', 'region']]
     y = data[['charges']]
-    
-
-    linear_regression(x, y)
-
-
-def linear_regression(x, y):
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=7)
+    
+
+    #linear_regression(x_train, x_test, y_train, y_test)
+
+    random_forest(x_train, x_test, y_train, y_test)
+
+
+def linear_regression(x_train, x_test, y_train, y_test):
 
     cl_model = LinearRegression()
     cl_model.fit(x_train, y_train)
@@ -60,14 +63,26 @@ def linear_regression(x, y):
     y_predito = cl_model.predict(x_test)
 
     r_square = r2_score(y_test, y_predito)
+    print(f'R² %: {r_square}')
 
+    gen_graph(y_test, y_predito)
+
+
+def random_forest(x_train, x_test, y_train, y_test):
+
+    rf_model = RandomForestRegressor(y_est=2, random_state=7)
+    rf_model.fit(x_train, y_train.values.ravel())
+
+    y_predito = rf_model.predict(x_test)
+
+    r_square = r2_score(y_test, y_predito)
     print(f'R² %: {r_square}')
 
 
-def gen_graph(y_test, lnr_reg):
+def gen_graph(y_test, y_predito):
     
     plt.figure(figsize=(8,8))
-    plt.scatter(y_test, lnr_reg, alpha=0.2)
+    plt.scatter(y_test, y_predito, alpha=0.2)
 
     plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()])
     plt.title('PREVISÕES DOS CUSTOS MÉDICOS INDIVIDUAIS')
