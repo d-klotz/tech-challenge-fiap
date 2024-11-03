@@ -56,3 +56,5 @@ O notebook [`tech-challenge-tree-based.ipynb`](tech-challenge-tree-based.ipynb) 
 ## Conclusão
 
 Este projeto visa não apenas encontrar o melhor modelo de previsão, mas também fornecer insights sobre quais fatores mais influenciam os custos de seguros de saúde. Através da análise dos dados e do desenvolvimento de modelos preditivos, esperamos contribuir para uma melhor compreensão dos custos associados aos seguros de saúde.
+
+O arquivo [`Relatório Tech Challenge Fase 01.pdf`](Relatório Tech Challenge Fase 01.pdf) descreve os passos e etapas exploratórias e analíticas desse projeto. 
